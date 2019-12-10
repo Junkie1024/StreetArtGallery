@@ -65,22 +65,14 @@ public class MainActivity extends AppCompatActivity {
             URL url = null;
             try {
 
-                url = new URL("http://192.168.3.109:8080/StreetArtGallery/streetart/database/login&"+id+"&"+pass);
-
+                url = new URL("http://192.168.2.10:8080/StreetArtGallery/streetart/database/login&"+id+"&"+pass);
                 HttpURLConnection client = null;
-
                 client = (HttpURLConnection) url.openConnection();
-
                 client.setRequestMethod("GET");
-
                 int responseCode = client.getResponseCode();
-
                 System.out.println("\n Sending 'GET' request to URL : " + url);
-
                 System.out.println("Response Code : " + responseCode);
-
                 InputStreamReader myInput= new InputStreamReader(client.getInputStream());
-
                 BufferedReader in = new BufferedReader(myInput);
                 String inputLine;
                 StringBuffer response = new StringBuffer();
@@ -118,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject responseObj = new JSONObject(jsonResponse);
                 Toast.makeText(context,responseObj.getString("message"),Toast.LENGTH_LONG).show();
                 if(responseObj.getString("Status").equals("OK")){
-                 startActivity(new Intent(MainActivity.this,Artist_List_Activity.class));
+                    startActivity(new Intent(MainActivity.this,Artist_List_Activity.class));
                 }
             }
             catch (JSONException e)

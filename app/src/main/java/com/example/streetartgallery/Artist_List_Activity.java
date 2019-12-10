@@ -116,38 +116,16 @@ public class Artist_List_Activity extends AppCompatActivity {
             {
                 JSONObject responseObj = new JSONObject(jsonResponse);
                 System.out.println("Response: " + responseObj);
-                final JSONArray jsonArray = responseObj.getJSONArray("Trains");
+                final JSONArray jsonArray = responseObj.getJSONArray("ArtistList");
                 for(int i=0;i<jsonArray.length();i++)
                 {
                     final JSONObject jsonObject = jsonArray.getJSONObject(i);
                     artist_data item = new artist_data(
-                            jsonObject.getInt("artist_id"),
-                            jsonObject.getString("artist_fname"),
-                            jsonObject.getString("artist_lname"));
+                            jsonObject.getInt("ARTISTID"),
+                            jsonObject.getString("FIRSTNAME"),
+                            jsonObject.getString("LASTNAME"));
                               artistDataArrayList.add(item);
                     recycleAdapter.notifyDataSetChanged();
-                    recycleAdapter.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
-                            int position = viewHolder.getAdapterPosition();
-                            String Artist = "";
-                            try {
-                                if(jsonArray.getJSONObject(position).has("Routes")) {
-
-                                    Artist = jsonArray.getJSONObject(position).getJSONArray("Routes").toString();
-                                    Intent i = new Intent(Artist_List_Activity.this,MainActivity.class);
-                                    i.putExtra("Artist",Artist);
-                                    startActivity(i);
-                                }
-                                else {
-                                    Toast.makeText(context,"No Artists Found",Toast.LENGTH_LONG).show();
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
 
                 }
             }

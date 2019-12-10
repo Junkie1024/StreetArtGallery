@@ -5,13 +5,10 @@ public class artist_data {
     String artist_fname,artist_lname;
     int artist_id;
 
-    public artist_data(String artist_fname, String artist_lname, int artist_id) {
+    public artist_data(int artist_id, String artist_fname, String artist_lname) {
         this.artist_fname = artist_fname;
         this.artist_lname = artist_lname;
         this.artist_id = artist_id;
-    }
-
-    public artist_data(int artist_id, String artist_fname, String artist_lname) {
     }
 
     public String getArtist_fname() {

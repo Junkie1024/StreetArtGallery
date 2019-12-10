@@ -17,7 +17,8 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
     private Context context;
     private View.OnClickListener RecycleAdapterListener;
 
-    public RecycleAdapter(ArrayList<artist_data> trainDataList, Context context) {
+
+    public RecycleAdapter(ArrayList<artist_data> artistDataArrayList, Context context) {
         this.artistDataArrayList = artistDataArrayList;
         this.context = context;
     }
@@ -63,7 +64,6 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
             artistId = itemView.findViewById(R.id.artist_id);
             artistFname = itemView.findViewById(R.id.fname);
             artistLname = itemView.findViewById(R.id.lname);
-
 
             itemView.setTag(this);
 
