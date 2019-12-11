@@ -37,9 +37,6 @@ public class Artist_List_Activity extends AppCompatActivity {
         artist_list_recyclerView = findViewById(R.id.Artist_List_recycler_view);
 
         artistDataArrayList = new ArrayList<artist_data>();
-        recycleAdapter = new RecycleAdapter(artistDataArrayList,getApplicationContext());
-        artist_list_recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        artist_list_recyclerView.setAdapter(recycleAdapter);
         loadData();
 
     }
@@ -64,7 +61,7 @@ public class Artist_List_Activity extends AppCompatActivity {
             URL url = null;
             try {
 
-                url = new URL("http://192.168.2.10:8080/StreetArtGallery/streetart/database/ArtistList");
+                url = new URL("http://192.168.3.109:8080/StreetArtGallery/streetart/database/ArtistList");
 
                 HttpURLConnection client = null;
 
@@ -125,9 +122,13 @@ public class Artist_List_Activity extends AppCompatActivity {
                             jsonObject.getString("FIRSTNAME"),
                             jsonObject.getString("LASTNAME"));
                               artistDataArrayList.add(item);
-                    recycleAdapter.notifyDataSetChanged();
+                    //recycleAdapter.notifyDataSetChanged();
 
                 }
+                recycleAdapter = new RecycleAdapter(artistDataArrayList,getApplicationContext());
+                artist_list_recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                artist_list_recyclerView.setAdapter(recycleAdapter);
+
             }
             catch (JSONException e)
             {

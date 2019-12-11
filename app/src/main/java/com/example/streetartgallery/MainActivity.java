@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             URL url = null;
             try {
 
-                url = new URL("http://192.168.2.10:8080/StreetArtGallery/streetart/database/login&"+id+"&"+pass);
+                url = new URL("http://192.168.3.109:8080/StreetArtGallery/streetart/database/login&"+id+"&"+pass);
                 HttpURLConnection client = null;
                 client = (HttpURLConnection) url.openConnection();
                 client.setRequestMethod("GET");
